@@ -14,8 +14,12 @@ class AddMemoViewController: UIViewController {
     @IBOutlet weak var memoTextView: UITextView!
     
     @IBOutlet weak var nameTextView: UITextView!
+    var selectedRow:Int!
+    //var selectedMemo : String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //memoTextView.text = selectedMemo
         // Do any additional setup after loading the view.
     }
     
@@ -34,7 +38,6 @@ class AddMemoViewController: UIViewController {
             }else{
                 showAlert(title: "何も入力されていません")
             }
-
         }else{
             //最初、何も書かれていない場合
             var newMemoArray = [String]()

@@ -67,10 +67,10 @@ class TableViewController2: UITableViewController{
        }
     func loadMemo(){
         if ud.array(forKey: "memoArray") != nil{
-            //取得 またas!でアンラップしているのでnilじゃない時のみ
-            memoArray = ud.array(forKey: "memoArray") as![String]
+        //取得 またas!でアンラップしているのでnilじゃない時のみ
+        memoArray = ud.array(forKey: "memoArray") as![String]
             //reloadしてくれる
-            memoTableView.reloadData()
+        memoTableView.reloadData()
         }
     }
 //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
