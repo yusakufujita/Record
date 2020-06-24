@@ -15,20 +15,27 @@ class DetailViewController2: UIViewController {
     var addBarButtonItem: UIBarButtonItem!      // +ボタン
     var editBarButtonItem: UIBarButtonItem!     // 編集ボタン
     
+    
+    @IBOutlet weak var nameTextView: UITextView!
+    
     @IBOutlet weak var memoTextView: UITextView!
     
     var selectedRow:Int!
     var selectedMemo : String!
+    var selectedName : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
        // print(memoTextView.text)
         memoTextView.text = selectedMemo
+        nameTextView.text = selectedName
+//        nameTextView.text =
 //        print(selectedMemo)
         // ②バーボタンアイテムの初期化
         addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(addBarButtonTapped(_:)))
                 // ③バーボタンアイテムの追加
         self.navigationItem.rightBarButtonItems = [addBarButtonItem]
+       // print(selectedRow)
 
         // Do any additional setup after loading the view.
     }
@@ -36,20 +43,8 @@ class DetailViewController2: UIViewController {
     @IBAction func save(_ sender: Any) {
 //      addText()
      updateText()
+        
     }
-//    func addText() {
-//        let text = "..."  // textView.text
-//        if var memoArray = UserDefaults.standard.array(forKey: key) as? [String] {
-//            // 既にデータがある場合
-//            memoArray.append(text)
-//            UserDefaults.standard.set(memoArray, forKey: key)
-//        } else {
-//            // 新規保存の場
-//            var array = [String]()
-//            array.append(text)
-//            UserDefaults.standard.set(array, forKey: key)
-//        }
-//    }
     
     func updateText() {
         let inputText = selectedMemo!// DetailViewControllerで、TextViewの初期表示に使ったtext
@@ -77,16 +72,29 @@ class DetailViewController2: UIViewController {
          }
     //削除ボタンをタップした時の処理
     @objc func addBarButtonTapped(_ sender: UIBarButtonItem) {
-           print("ボタンが押された!")
-        let ud = UserDefaults.standard
-        if ud.array(forKey: "memoArray") != nil{
-            var saveMemoArray = ud.array(forKey: "memoArray") as![String]
+        print("ボタンが押された!")
+        let ud1 = UserDefaults.standard
+        if ud1.array(forKey: "memoArray") != nil{
+            var saveMemoArray = ud1.array(forKey: "memoArray") as![String]
             saveMemoArray.remove(at: selectedRow)
-            ud.set(saveMemoArray, forKey: "memoArray" )
-            ud.synchronize()
+            ud1.set(saveMemoArray, forKey: "memoArray" )
+            ud1.synchronize()
             //画面遷移
             self.navigationController?.popViewController(animated: true)
         }
+        
+        let ud2 = UserDefaults.standard
+        if ud2.array(forKey: "nameArray") != nil{
+            var saveNameArray = ud2.array(forKey: "nameArray") as![String]
+            //saveMemoArray.removeAll()
+            //saveNameArray.remove(at: 0)
+            saveNameArray.remove(at: selectedRow)
+            ud2.set(saveNameArray, forKey: "nameArray" )
+            ud2.synchronize()
+            //画面遷移
+            self.navigationController?.popViewController(animated: true)
+        }
+     
     }
     
     

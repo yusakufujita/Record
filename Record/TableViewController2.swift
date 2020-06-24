@@ -13,21 +13,26 @@ class TableViewController2: UITableViewController{
     
     @IBOutlet weak var memoTableView: UITableView!
     var memoArray = [String]()
+    var nameArray = [String]()
     let ud = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadMemo()
+        loadData()
+        tableView.rowHeight = 64
         print(memoArray)
+        print(nameArray)
+        
+  
+    
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
-          loadMemo()
-      }
+        loadData()      }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,11 +45,25 @@ class TableViewController2: UITableViewController{
         return memoArray.count
     }
 
+//    func AddMemoViewController
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "memoCell", for: indexPath)
-    cell.textLabel?.text = self.memoArray[indexPath.row]
-     return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "memoCell", for: indexPath) as? memoCell else {
+            fatalError()
+        }
+        cell.textLabel?.text = self.memoArray[indexPath.row]
+            //print(nameArray)
+        cell.nameLabel?.text = self.nameArray[indexPath.row]
+      //print(nameArray)
+            //"Name \(indexPath.row)"
+        
+        cell.profileImageView.backgroundColor = UIColor(
+            red: CGFloat(arc4random_uniform(255)) / 255,
+            green: CGFloat(arc4random_uniform(255)) / 255,
+            blue: CGFloat(arc4random_uniform(255)) / 255,
+            alpha: 1.0
+        )
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -55,25 +74,45 @@ class TableViewController2: UITableViewController{
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
            //destinationのクラッシュ防ぐ
-           if segue.identifier == "toDetail"{
-               //detailViewControllerを取得
-               //as! DetailViewControllerでダウンキャストしている
-               let detailViewController = segue.destination as! DetailViewController2
-               //遷移前に選ばれているCellが取得できる
-               let selectedIndexPath = memoTableView.indexPathForSelectedRow!
-               detailViewController.selectedMemo = memoArray[selectedIndexPath.row]
-               detailViewController.selectedRow = selectedIndexPath.row
-           }
-       }
+        if segue.identifier == "toDetail"{
+            //detailViewControllerを取得
+            //as! DetailViewControllerでダウンキャストしている
+            let detailViewController = segue.destination as! DetailViewController2
+            //遷移前に選ばれているCellが取得できる
+            let selectedIndexPath = memoTableView.indexPathForSelectedRow!
+            //遷移後の内容にテキストを入れる
+            detailViewController.selectedMemo = memoArray[selectedIndexPath.row]
+            detailViewController.selectedRow = selectedIndexPath.row
+            //遷移後の名前に名前を入れる
+            detailViewController.selectedName = nameArray[selectedIndexPath.row]
+            detailViewController.selectedRow = selectedIndexPath.row
+            
+            
+        }
+    }
+    private func loadData() {
+        loadMemo()
+        loadName()
+        memoTableView.reloadData()
+    }
     func loadMemo(){
         if ud.array(forKey: "memoArray") != nil{
         //取得 またas!でアンラップしているのでnilじゃない時のみ
         memoArray = ud.array(forKey: "memoArray") as![String]
-            //reloadしてくれる
-        memoTableView.reloadData()
         }
     }
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    
+    func loadName() {
+        if ud.array(forKey: "nameArray") != nil{
+        //取得 またas!でアンラップしているのでnilじゃない時のみ
+        nameArray = ud.array(forKey: "nameArray") as![String]
+        }
+    }
+
+    
+    
+
+    //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 //         if editingStyle == .delete {
 //            //resultArray内のindexPathのrow番目をremove（消去）する
 //            memoArray.remove(at: indexPath.row)
@@ -130,4 +169,9 @@ class TableViewController2: UITableViewController{
     }
     */
 
+}
+class memoCell: UITableViewCell {
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+//    func nameLabel;.text = "名前"
 }

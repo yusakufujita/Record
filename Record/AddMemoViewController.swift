@@ -15,7 +15,7 @@ class AddMemoViewController: UIViewController {
     
     @IBOutlet weak var nameTextView: UITextView!
     var selectedRow:Int!
-    //var selectedMemo : String!
+    var selectedMemo : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +25,44 @@ class AddMemoViewController: UIViewController {
     
     
     @IBAction func save(_ sender: Any) {
-        let inputText = memoTextView.text
-        let ud = UserDefaults.standard
-        if ud.array(forKey: "memoArray") != nil{
+        //名前の保存
+        let inputName = nameTextView.text
+        let ud1 = UserDefaults.standard
+        if ud1.array(forKey: "nameArray") != nil{
             //saveMemoArrayに取得
-            var saveMemoArray = ud.array(forKey: "memoArray") as! [String]
+            var saveNameArray = ud1.array(forKey: "nameArray") as! [String]
+            //テキストに何か書かれているか？
+            if inputName != ""{
+                //配列に追加
+                saveNameArray.append(inputName!)
+                ud1.set(saveNameArray, forKey: "nameArray")
+            }else{
+                showAlert(title: "何も入力されていません")
+            }
+        }else{
+            //最初、何も書かれていない場合
+            var newNameArray = [String]()
+            //nilを強制アンラップはエラーが出るから
+            if inputName != ""{
+                //inputtextはoptional型だから強制アンラップ
+                newNameArray.append(inputName!)
+                ud1.set(newNameArray, forKey: "nameArray")
+            }else{
+                showAlert(title: "何も入力されていません")
+            }
+        }
+   
+        //内容の保存
+        let inputText = memoTextView.text
+        let ud2 = UserDefaults.standard
+        if ud2.array(forKey: "memoArray") != nil{
+            //saveMemoArrayに取得
+            var saveMemoArray = ud2.array(forKey: "memoArray") as! [String]
                 //テキストに何か書かれているか？
             if inputText != ""{
                 //配列に追加
                 saveMemoArray.append(inputText!)
-                ud.set(saveMemoArray, forKey: "memoArray")
+                ud2.set(saveMemoArray, forKey: "memoArray")
             }else{
                 showAlert(title: "何も入力されていません")
             }
@@ -45,13 +73,13 @@ class AddMemoViewController: UIViewController {
             if inputText != ""{
             //inputtextはoptional型だから強制アンラップ
                 newMemoArray.append(inputText!)
-                ud.set(newMemoArray, forKey: "memoArray")
+                ud2.set(newMemoArray, forKey: "memoArray")
             }else{
                 showAlert(title: "何も入力されていません")
             }
         }
               showAlert(title: "保存完了")
-              ud.synchronize()
+              ud2.synchronize()
     }
     
     func showAlert(title:String){
