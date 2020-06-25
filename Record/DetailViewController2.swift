@@ -26,6 +26,8 @@ class DetailViewController2: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameTextView.keyboardType = .namePhonePad
+
        // print(memoTextView.text)
         memoTextView.text = selectedMemo
         nameTextView.text = selectedName
@@ -39,6 +41,11 @@ class DetailViewController2: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func TapEditImageView(_ sender: Any) {
+        
+    }
+    
     
     @IBAction func save(_ sender: Any) {
 //      addText()

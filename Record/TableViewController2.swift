@@ -14,6 +14,7 @@ class TableViewController2: UITableViewController{
     @IBOutlet weak var memoTableView: UITableView!
     var memoArray = [String]()
     var nameArray = [String]()
+    var ImageArray = [NSData]()
     let ud = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +22,8 @@ class TableViewController2: UITableViewController{
         tableView.rowHeight = 64
         print(memoArray)
         print(nameArray)
-        
-  
+      
+       
     
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -32,7 +33,8 @@ class TableViewController2: UITableViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadData()      }
+        loadData()
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -44,6 +46,7 @@ class TableViewController2: UITableViewController{
         // #warning Incomplete implementation, return the number of rows
         return memoArray.count
     }
+  
 
 //    func AddMemoViewController
     
@@ -51,18 +54,23 @@ class TableViewController2: UITableViewController{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "memoCell", for: indexPath) as? memoCell else {
             fatalError()
         }
-        cell.textLabel?.text = self.memoArray[indexPath.row]
+        //cell.textLabel?.text = self.memoArray[indexPath.row]
             //print(nameArray)
         cell.nameLabel?.text = self.nameArray[indexPath.row]
       //print(nameArray)
             //"Name \(indexPath.row)"
-        
-        cell.profileImageView.backgroundColor = UIColor(
-            red: CGFloat(arc4random_uniform(255)) / 255,
-            green: CGFloat(arc4random_uniform(255)) / 255,
-            blue: CGFloat(arc4random_uniform(255)) / 255,
-            alpha: 1.0
-        )
+        //data型にキャストしてUIImageとして取り出す
+        cell.profileImageView.image = UIImage(data: ImageArray[indexPath.row] as Data)
+        cell.profileImageView.frame = CGRect(x: 0, y: 1, width: cell.bounds.size.height - 2, height: cell.bounds.size.height - 2)
+        cell.profileImageView.contentMode = .scaleAspectFill
+        cell.profileImageView.clipsToBounds = true
+
+//        cell.profileImageView.backgroundColor = UIColor(
+//            red: CGFloat(arc4random_uniform(255)) / 255,
+//            green: CGFloat(arc4random_uniform(255)) / 255,
+//            blue: CGFloat(arc4random_uniform(255)) / 255,
+//            alpha: 1.0
+//        )
         return cell
     }
     
@@ -93,6 +101,7 @@ class TableViewController2: UITableViewController{
     private func loadData() {
         loadMemo()
         loadName()
+        loadImage()
         memoTableView.reloadData()
     }
     func loadMemo(){
@@ -109,6 +118,12 @@ class TableViewController2: UITableViewController{
         }
     }
 
+    func loadImage() {
+        if ud.array(forKey: "saveImage") != nil{
+        //取得 またas!でアンラップしているのでnilじゃない時のみ
+        ImageArray = ud.array(forKey: "saveImage") as![NSData]
+        }
+    }
     
     
 

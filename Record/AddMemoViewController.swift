@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddMemoViewController: UIViewController {
+class AddMemoViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     
     @IBOutlet weak var memoTextView: UITextView!
@@ -16,15 +16,68 @@ class AddMemoViewController: UIViewController {
     @IBOutlet weak var nameTextView: UITextView!
     var selectedRow:Int!
     var selectedMemo : String!
+    //画像を保存するUserDefaults
+    let defaults = UserDefaults.standard
+    //画像を保存する配列
+    var saveArray: Array! = [NSData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameTextView.keyboardType = .namePhonePad
         //memoTextView.text = selectedMemo
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func TapImageView(_ sender: Any) {
+        changeImage()
+    }
     
+    @IBOutlet weak var ImageView: UIImageView!
+    
+    func changeImage() {
+           //アルバムを指定
+           //SourceType.camera：カメラを指定
+           //SourceType.photoLibrary：アルバムを指定
+           let sourceType:UIImagePickerController.SourceType = UIImagePickerController.SourceType.photoLibrary
+           //アルバムを立ち上げる
+           if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary){
+               // インスタンスの作成
+               let cameraPicker = UIImagePickerController()
+               cameraPicker.sourceType = sourceType
+               cameraPicker.delegate = self
+               //アルバム画面を開く
+               self.present(cameraPicker, animated: true, completion: nil)
+           }
+       }
+           
+       //アルバム画面で写真を選択した時
+       func imagePickerController(_ picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+           //imageにアルバムで選択した画像が格納される
+           if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            //ImageViewに表示
+            self.ImageView.image = image
+            
+               //アルバム画面を閉じる
+            self.dismiss(animated: true, completion: nil)
+           }
+       }
+    
+    func sendSaveImage() {
+        //NSData型にキャスト
+        let data = self.ImageView.image?.pngData() as NSData?
+        if let imageData = data {
+            saveArray.append(imageData)
+            defaults.set(saveArray, forKey: "saveImage")
+            defaults.synchronize()
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     @IBAction func save(_ sender: Any) {
+        //画像をUserDefalutに保存
+        sendSaveImage()
         //名前の保存
         let inputName = nameTextView.text
         let ud1 = UserDefaults.standard
