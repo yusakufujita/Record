@@ -18,11 +18,9 @@ class TableViewController2: UITableViewController{
     let ud = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
         tableView.rowHeight = 64
-        print(memoArray)
-        print(nameArray)
-      
+       
+
        
     
         // Uncomment the following line to preserve selection between presentations
@@ -34,6 +32,9 @@ class TableViewController2: UITableViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         loadData()
+//        print(memoArray)
+//        print(nameArray)
+        //print(ImageArray)
     }
     // MARK: - Table view data source
 
@@ -54,23 +55,13 @@ class TableViewController2: UITableViewController{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "memoCell", for: indexPath) as? memoCell else {
             fatalError()
         }
-        //cell.textLabel?.text = self.memoArray[indexPath.row]
-            //print(nameArray)
+       //nameLabel.textに名前を代入
         cell.nameLabel?.text = self.nameArray[indexPath.row]
-      //print(nameArray)
-            //"Name \(indexPath.row)"
         //data型にキャストしてUIImageとして取り出す
         cell.profileImageView.image = UIImage(data: ImageArray[indexPath.row] as Data)
         cell.profileImageView.frame = CGRect(x: 0, y: 1, width: cell.bounds.size.height - 2, height: cell.bounds.size.height - 2)
         cell.profileImageView.contentMode = .scaleAspectFill
         cell.profileImageView.clipsToBounds = true
-
-//        cell.profileImageView.backgroundColor = UIColor(
-//            red: CGFloat(arc4random_uniform(255)) / 255,
-//            green: CGFloat(arc4random_uniform(255)) / 255,
-//            blue: CGFloat(arc4random_uniform(255)) / 255,
-//            alpha: 1.0
-//        )
         return cell
     }
     
@@ -93,15 +84,16 @@ class TableViewController2: UITableViewController{
             detailViewController.selectedRow = selectedIndexPath.row
             //遷移後の名前に名前を入れる
             detailViewController.selectedName = nameArray[selectedIndexPath.row]
-            detailViewController.selectedRow = selectedIndexPath.row
             
-            
+            //遷移後のイメージに画像を入れる
+            detailViewController.selectedImage = ImageArray[selectedIndexPath.row]
         }
     }
     private func loadData() {
         loadMemo()
         loadName()
-        loadImage()
+         //loadImage()
+        defaultsArray()
         memoTableView.reloadData()
     }
     func loadMemo(){
@@ -118,12 +110,24 @@ class TableViewController2: UITableViewController{
         }
     }
 
-    func loadImage() {
-        if ud.array(forKey: "saveImage") != nil{
-        //取得 またas!でアンラップしているのでnilじゃない時のみ
-        ImageArray = ud.array(forKey: "saveImage") as![NSData]
+    func defaultsArray() {
+        //UserDefaultsの中身が空でないことを確認
+        if ud.object(forKey: "saveImage") != nil {
+            let objects = ud.object(forKey: "saveImage") as? NSArray
+            //配列としてUserDefaultsに保存した時の値と処理後の値が変わってしまうのでremoveAll()
+            ImageArray.removeAll()
+            for data in objects! {
+                ImageArray.append(data as! NSData)
+            }
         }
+        tableView.reloadData()
     }
+//    func loadImage() {
+//        if ud.array(forKey: "saveImage") != nil{
+//        //取得 またas!でアンラップしているのでnilじゃない時のみ
+//        ImageArray = ud.array(forKey: "saveImage") as![NSData]
+//        }
+//    }
     
     
 

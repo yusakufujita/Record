@@ -307,7 +307,7 @@
                                     <constraint firstAttribute="height" constant="150" id="akT-Gk-Dod"/>
                                 </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="yK2-NG-FgI" appends="YES" id="ARZ-TV-Lzq"/>
+                                    <outletCollection property="gestureRecognizers" destination="ac3-UE-Nzd" appends="YES" id="mY4-LG-bhX"/>
                                 </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="内容" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyY-aI-Qld">
@@ -321,6 +321,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="PVA-dp-jNM" firstAttribute="top" secondItem="6qt-hS-Ein" secondAttribute="bottom" constant="8" id="6MD-L8-r9X"/>
                             <constraint firstItem="Uaf-Jh-4AE" firstAttribute="trailing" secondItem="yyY-aI-Qld" secondAttribute="trailing" id="7fP-CP-HmG"/>
@@ -345,14 +346,15 @@
                         <viewLayoutGuide key="safeArea" id="g0j-ln-ixe"/>
                     </view>
                     <connections>
+                        <outlet property="ImageTextView" destination="PVA-dp-jNM" id="PtO-13-jxW"/>
                         <outlet property="memoTextView" destination="s6i-r6-KQz" id="QQ0-Ao-ZgU"/>
                         <outlet property="nameTextView" destination="6qt-hS-Ein" id="NKw-aH-t8j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2wg-od-Caa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="yK2-NG-FgI">
+                <tapGestureRecognizer id="ac3-UE-Nzd">
                     <connections>
-                        <action selector="TapEditImageView:" destination="cWD-AN-RGd" id="gIP-jI-8jO"/>
+                        <action selector="ImageView:" destination="cWD-AN-RGd" id="2vM-fA-PJW"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

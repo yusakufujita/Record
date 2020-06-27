@@ -19,7 +19,7 @@ class AddMemoViewController: UIViewController,UIImagePickerControllerDelegate,UI
     //画像を保存するUserDefaults
     let defaults = UserDefaults.standard
     //画像を保存する配列
-    var saveArray: Array! = [NSData]()
+    var saveImageArray: Array! = [NSData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +56,6 @@ class AddMemoViewController: UIViewController,UIImagePickerControllerDelegate,UI
            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             //ImageViewに表示
             self.ImageView.image = image
-            
                //アルバム画面を閉じる
             self.dismiss(animated: true, completion: nil)
            }
@@ -66,10 +65,11 @@ class AddMemoViewController: UIViewController,UIImagePickerControllerDelegate,UI
         //NSData型にキャスト
         let data = self.ImageView.image?.pngData() as NSData?
         if let imageData = data {
-            saveArray.append(imageData)
-            defaults.set(saveArray, forKey: "saveImage")
+            saveImageArray.append(imageData)
+            defaults.set(saveImageArray, forKey: "saveImage")
             defaults.synchronize()
         }
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -87,7 +87,7 @@ class AddMemoViewController: UIViewController,UIImagePickerControllerDelegate,UI
             //テキストに何か書かれているか？
             if inputName != ""{
                 //配列に追加
-                saveNameArray.append(inputName!)
+                saveNameArray.insert(inputName! , at: 0)
                 ud1.set(saveNameArray, forKey: "nameArray")
             }else{
                 showAlert(title: "何も入力されていません")
@@ -114,7 +114,7 @@ class AddMemoViewController: UIViewController,UIImagePickerControllerDelegate,UI
                 //テキストに何か書かれているか？
             if inputText != ""{
                 //配列に追加
-                saveMemoArray.append(inputText!)
+                saveMemoArray.insert(inputText! , at: 0)
                 ud2.set(saveMemoArray, forKey: "memoArray")
             }else{
                 showAlert(title: "何も入力されていません")
