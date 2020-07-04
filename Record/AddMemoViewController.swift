@@ -61,17 +61,29 @@ class AddMemoViewController: UIViewController,UIImagePickerControllerDelegate,UI
            }
        }
     
+    
     func sendSaveImage() {
         //NSData型にキャスト
         let data = self.ImageView.image?.pngData() as NSData?
         if let imageData = data {
-            saveImageArray.append(imageData)
+            var saveImageArray = UserDefaults.standard.object(forKey: "saveImage") as? [NSData] ?? []
+            saveImageArray.insert(imageData, at: 0)
+            //saveImageArray.append(imageData)
             defaults.set(saveImageArray, forKey: "saveImage")
             defaults.synchronize()
         }
-
     }
     
+//    func sendSaveImage() {
+//        //NSData型にキャスト
+//        let data = self.ImageView.image?.pngData() as NSData?
+//        if let imageData = data {
+//            saveImageArray.append(imageData)
+//            defaults.set(saveImageArray, forKey: "saveImage")
+//            defaults.synchronize()
+//        }
+//    }
+//
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -87,6 +99,7 @@ class AddMemoViewController: UIViewController,UIImagePickerControllerDelegate,UI
             //テキストに何か書かれているか？
             if inputName != ""{
                 //配列に追加
+                //saveNameArray.append(inputName!)
                 saveNameArray.insert(inputName! , at: 0)
                 ud1.set(saveNameArray, forKey: "nameArray")
             }else{
@@ -98,7 +111,8 @@ class AddMemoViewController: UIViewController,UIImagePickerControllerDelegate,UI
             //nilを強制アンラップはエラーが出るから
             if inputName != ""{
                 //inputtextはoptional型だから強制アンラップ
-                newNameArray.append(inputName!)
+                newNameArray.insert(inputName!, at: 0)
+              //  newNameArray.append(inputName!)
                 ud1.set(newNameArray, forKey: "nameArray")
             }else{
                 showAlert(title: "何も入力されていません")
@@ -114,6 +128,7 @@ class AddMemoViewController: UIViewController,UIImagePickerControllerDelegate,UI
                 //テキストに何か書かれているか？
             if inputText != ""{
                 //配列に追加
+               // saveMemoArray.append(inputText!)
                 saveMemoArray.insert(inputText! , at: 0)
                 ud2.set(saveMemoArray, forKey: "memoArray")
             }else{
@@ -125,7 +140,8 @@ class AddMemoViewController: UIViewController,UIImagePickerControllerDelegate,UI
             //nilを強制アンラップはエラーが出るから
             if inputText != ""{
             //inputtextはoptional型だから強制アンラップ
-                newMemoArray.append(inputText!)
+                newMemoArray.insert(inputText!, at: 0)
+               // newMemoArray.append(inputText!)
                 ud2.set(newMemoArray, forKey: "memoArray")
             }else{
                 showAlert(title: "何も入力されていません")

@@ -60,9 +60,21 @@ class DetailViewController2: UIViewController, UIImagePickerControllerDelegate &
     
     
     func sendSaveImage() {
+//        //NSData型にキャスト
+//        // saveImageArray.removeAll()
+//        let data = self.ImageTextView.image?.pngData() as NSData?
+//        if let imageData = data {
+//            saveImageArray.append(imageData)
+//            defaults.set(saveImageArray, forKey: "saveImage")
+//            defaults.synchronize()
+//
+//        }
+        
         //NSData型にキャスト
         let data = self.ImageTextView.image?.pngData() as NSData?
         if let imageData = data {
+            var saveImageArray = UserDefaults.standard.object(forKey: "saveImage") as? [NSData] ?? []
+            //saveImageArray.insert(imageData, at: 0)
             saveImageArray.append(imageData)
             defaults.set(saveImageArray, forKey: "saveImage")
             defaults.synchronize()

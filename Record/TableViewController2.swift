@@ -19,15 +19,7 @@ class TableViewController2: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 64
-       
-
-       
-    
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+       // ImageArray.removeAll()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,8 +84,8 @@ class TableViewController2: UITableViewController{
     private func loadData() {
         loadMemo()
         loadName()
-         //loadImage()
-        defaultsArray()
+         loadImage()
+       // defaultsArray()
         memoTableView.reloadData()
     }
     func loadMemo(){
@@ -110,24 +102,25 @@ class TableViewController2: UITableViewController{
         }
     }
 
-    func defaultsArray() {
-        //UserDefaultsの中身が空でないことを確認
-        if ud.object(forKey: "saveImage") != nil {
-            let objects = ud.object(forKey: "saveImage") as? NSArray
-            //配列としてUserDefaultsに保存した時の値と処理後の値が変わってしまうのでremoveAll()
-            ImageArray.removeAll()
-            for data in objects! {
-                ImageArray.append(data as! NSData)
-            }
-        }
-        tableView.reloadData()
-    }
-//    func loadImage() {
-//        if ud.array(forKey: "saveImage") != nil{
-//        //取得 またas!でアンラップしているのでnilじゃない時のみ
-//        ImageArray = ud.array(forKey: "saveImage") as![NSData]
+//    func defaultsArray() {
+//        //UserDefaultsの中身が空でないことを確認
+//        if ud.object(forKey: "saveImage") != nil {
+//            let objects = ud.object(forKey: "saveImage") as? NSArray
+//            //配列としてUserDefaultsに保存した時の値と処理後の値が変わってしまうのでremoveAll()
+//           // ImageArray.removeAll()
+//            for data in objects! {
+//              ImageArray.append(data as! NSData)
+//             //   ImageArray.insert(data as! NSData, at: 0)
+//            }
 //        }
+//        tableView.reloadData()
 //    }
+    func loadImage() {
+        if ud.array(forKey: "saveImage") != nil{
+        //取得 またas!でアンラップしているのでnilじゃない時のみ
+        ImageArray = ud.array(forKey: "saveImage") as![NSData]
+        }
+    }
     
     
 
