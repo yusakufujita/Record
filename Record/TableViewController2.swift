@@ -26,7 +26,9 @@ class TableViewController2: UITableViewController{
         loadData()
 //        print(memoArray)
 //        print(nameArray)
-        //print(ImageArray)
+       // print(ImageArray.count)
+//        var ind = IndexPath()
+//        print(ind.row)
     }
     // MARK: - Table view data source
 
@@ -79,12 +81,15 @@ class TableViewController2: UITableViewController{
             
             //遷移後のイメージに画像を入れる
             detailViewController.selectedImage = ImageArray[selectedIndexPath.row]
+            
+            //遷移後にタップされたセルを教える
+            detailViewController.cellnum = selectedIndexPath.row
         }
     }
     private func loadData() {
         loadMemo()
         loadName()
-         loadImage()
+        loadImage()
        // defaultsArray()
         memoTableView.reloadData()
     }

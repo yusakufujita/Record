@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Foundation
 
-class DetailViewController2: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class DetailViewController2: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
     let key = "memoArray"
     let key1 = "nameArray"
     let key2 = "saveImage"
@@ -69,22 +70,42 @@ class DetailViewController2: UIViewController, UIImagePickerControllerDelegate &
 //            defaults.synchronize()
 //
 //        }
-        
-        //NSData型にキャスト
+      //  NSData型にキャスト
         let data = self.ImageTextView.image?.pngData() as NSData?
         if let imageData = data {
             var saveImageArray = UserDefaults.standard.object(forKey: "saveImage") as? [NSData] ?? []
             //saveImageArray.insert(imageData, at: 0)
-            saveImageArray.append(imageData)
+            let num = IndexPath()
+            saveImageArray.remove(at: cellnum)
+            saveImageArray.insert(imageData, at:cellnum)
+//            saveImageArray.insert(imageData, at: num)
+           // saveImageArray.append(imageData)
             defaults.set(saveImageArray, forKey: "saveImage")
             defaults.synchronize()
         }
+        
+//        func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+//
+//            let data = self.ImageTextView.image?.pngData() as NSData?
+//            if let imageData = data {
+//                var saveImageArray = UserDefaults.standard.object(forKey: "saveImage") as? [NSData] ?? []
+//                //saveImageArray.insert(imageData, at: 0)
+//                saveImageArray.remove(at: cellnum.row)
+//                saveImageArray.insert(imageData, at:cellnum.row )
+//                //            saveImageArray.insert(imageData, at: num)
+//                // saveImageArray.append(imageData)
+//                defaults.set(saveImageArray, forKey: "saveImage")
+//                defaults.synchronize()
+//            }
+//        }
+        
     }
     
     var selectedRow:Int!
     var selectedMemo : String!
     var selectedName : String!
     var selectedImage : NSData!
+    var cellnum:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
