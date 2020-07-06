@@ -24,7 +24,6 @@ class AddMemoViewController: UIViewController,UIImagePickerControllerDelegate,UI
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextView.keyboardType = .namePhonePad
-        //memoTextView.text = selectedMemo
         // Do any additional setup after loading the view.
     }
     

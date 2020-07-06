@@ -18,7 +18,7 @@ class TableViewController2: UITableViewController{
     let ud = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 64
+        tableView.rowHeight = 100
        // ImageArray.removeAll()
     }
     
