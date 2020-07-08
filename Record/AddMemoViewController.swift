@@ -8,24 +8,55 @@
 
 import UIKit
 
-class AddMemoViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class AddMemoViewController:
+UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextViewDelegate,UIScrollViewDelegate {
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     
     @IBOutlet weak var memoTextView: UITextView!
     
     @IBOutlet weak var nameTextView: UITextView!
+    
     var selectedRow:Int!
     var selectedMemo : String!
     //画像を保存するUserDefaults
     let defaults = UserDefaults.standard
     //画像を保存する配列
     var saveImageArray: Array! = [NSData]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+   
+        
+        //self.textFieldInit
         nameTextView.keyboardType = .namePhonePad
-        // Do any additional setup after loading the view.
+        memoTextView.keyboardType = .namePhonePad
+         
+        //スワイプでスクロールさせたならばキーボードを下げる
+            //        scrollView.keyboardDismissMode = .onDrag
+        
     }
+    
+  
+
+    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
+ 
+
+
+  
+    
     
     @IBAction func TapImageView(_ sender: Any) {
         changeImage()
@@ -83,9 +114,26 @@ class AddMemoViewController: UIViewController,UIImagePickerControllerDelegate,UI
 //        }
 //    }
 //
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+    
+ 
+  
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.scrollView.endEditing(true)
+//    }
+    
+    @IBAction func tapView2(_ sender: UITapGestureRecognizer) {
+        //編集中にキーボードを下げる
+        scrollView.endEditing(true)
     }
+ 
+//    private func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//
+//           textField.resignFirstResponder()
+//           return true
+//       }
+    
+    
+    
     @IBAction func save(_ sender: Any) {
         //画像をUserDefalutに保存
         sendSaveImage()
@@ -169,3 +217,4 @@ class AddMemoViewController: UIViewController,UIImagePickerControllerDelegate,UI
     */
 
 }
+

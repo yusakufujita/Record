@@ -22,12 +22,23 @@ class DetailViewController2: UIViewController, UIImagePickerControllerDelegate &
     //画像を保存する配列
     var saveImageArray: Array! = [NSData]()
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nameTextView: UITextView!
     
     @IBOutlet weak var memoTextView: UITextView!
     
     
     @IBOutlet weak var ImageTextView: UIImageView!
+    
+    
+    @IBAction func tapView(_ sender: Any) {
+        //編集中にキーボードを下げる
+        scrollView.endEditing(true)
+    }
+    
+    
+    
+    
     
     @IBAction func ImageView(_ sender: Any) {
         changeImage()

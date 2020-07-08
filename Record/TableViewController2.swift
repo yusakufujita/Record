@@ -16,6 +16,12 @@ class TableViewController2: UITableViewController{
     var nameArray = [String]()
     var ImageArray = [NSData]()
     let ud = UserDefaults.standard
+    
+    // Screenの高さ
+     var screenHeight:CGFloat!
+     // Screenの幅
+     var screenWidth:CGFloat!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 100
