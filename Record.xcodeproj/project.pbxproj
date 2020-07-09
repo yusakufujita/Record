@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2224C93924B63A9800529209 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224C93824B63A9800529209 /* LoginViewController.swift */; };
 		2224C93B24B64A8300529209 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2224C93A24B64A8300529209 /* GoogleService-Info.plist */; };
+		2224C93D24B7C5C400529209 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224C93C24B7C5C400529209 /* SignUpViewController.swift */; };
 		22A3A79324899D0C00887161 /* AddMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3A79224899D0C00887161 /* AddMemoViewController.swift */; };
 		22A3A79B248DA34900887161 /* TableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3A79A248DA34900887161 /* TableViewController2.swift */; };
 		22A3A79D248DACDD00887161 /* DetailViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3A79C248DACDD00887161 /* DetailViewController2.swift */; };
@@ -27,6 +28,7 @@
 		1A13BF5ACD37E87C9654DE33 /* Pods-Record.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Record.release.xcconfig"; path = "Target Support Files/Pods-Record/Pods-Record.release.xcconfig"; sourceTree = "<group>"; };
 		2224C93824B63A9800529209 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2224C93A24B64A8300529209 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2224C93C24B7C5C400529209 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		22A3A79224899D0C00887161 /* AddMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoViewController.swift; sourceTree = "<group>"; };
 		22A3A79A248DA34900887161 /* TableViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController2.swift; sourceTree = "<group>"; };
 		22A3A79C248DACDD00887161 /* DetailViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController2.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				22BE735A2481B3AD001FA426 /* AppDelegate.swift */,
 				22BE735C2481B3AD001FA426 /* SceneDelegate.swift */,
 				22BE73602481B3AD001FA426 /* Main.storyboard */,
+				2224C93C24B7C5C400529209 /* SignUpViewController.swift */,
 				22A3A79A248DA34900887161 /* TableViewController2.swift */,
 				22A3A79C248DACDD00887161 /* DetailViewController2.swift */,
 				22A3A79224899D0C00887161 /* AddMemoViewController.swift */,
@@ -231,6 +234,7 @@
 				22BE7373248590CA001FA426 /* TableViewController.swift in Sources */,
 				2224C93924B63A9800529209 /* LoginViewController.swift in Sources */,
 				22A3A79D248DACDD00887161 /* DetailViewController2.swift in Sources */,
+				2224C93D24B7C5C400529209 /* SignUpViewController.swift in Sources */,
 				22BE735D2481B3AD001FA426 /* SceneDelegate.swift in Sources */,
 				22BE737724859B4C001FA426 /* DetailViewController.swift in Sources */,
 			);

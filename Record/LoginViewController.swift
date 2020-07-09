@@ -48,6 +48,10 @@ class LoginViewController: UIViewController {
           Auth.auth().removeStateDidChangeListener(changed)
       }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
 
     /*
     // MARK: - Navigation
@@ -69,8 +73,7 @@ class LoginViewController: UIViewController {
                 self.label.text = error?.localizedDescription
                 return
             }else {
-                self.performSegue(withIdentifier: "toDetail", sender: nil)
-
+                self.performSegue(withIdentifier: "Login", sender: nil)
             }
         }
     }
