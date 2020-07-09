@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class DetailViewController2: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
+class DetailViewController2: UIViewController,UIScrollViewDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
     let key = "memoArray"
     let key1 = "nameArray"
     let key2 = "saveImage"
