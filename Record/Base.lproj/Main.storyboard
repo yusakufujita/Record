@@ -283,9 +283,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QCN-2w-JYh" customClass="KaedeTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QCN-2w-JYh" customClass="KaedeTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="75" y="266" width="265" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
@@ -294,9 +293,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jEG-5K-Op7" customClass="KaedeTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jEG-5K-Op7" customClass="KaedeTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="75" y="431" width="265" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
@@ -305,7 +303,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ユーザー新規登録画面" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDa-2a-AU9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ユーザー新規登録画面" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDa-2a-AU9">
                                 <rect key="frame" x="29" y="130" width="365" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="4Sa-zG-AUO"/>
@@ -314,17 +312,38 @@
                                 <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qJ-NT-wOz">
-                                <rect key="frame" x="149" y="583" width="117" height="105"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qJ-NT-wOz">
+                                <rect key="frame" x="149" y="636" width="117" height="52"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                 <state key="normal" title="登録"/>
+                                <connections>
+                                    <action selector="DoAction:" destination="bGn-ba-79o" eventType="touchUpInside" id="M9P-sP-gc7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="QCN-2w-JYh" firstAttribute="trailing" secondItem="jEG-5K-Op7" secondAttribute="trailing" id="2xK-QH-gHh"/>
+                            <constraint firstItem="KqS-xK-FhK" firstAttribute="bottom" secondItem="7qJ-NT-wOz" secondAttribute="bottom" constant="174" id="2xP-n7-OUc"/>
+                            <constraint firstItem="jEG-5K-Op7" firstAttribute="centerY" secondItem="KWx-d0-7nB" secondAttribute="centerY" id="7j7-bR-t4B"/>
+                            <constraint firstItem="IDa-2a-AU9" firstAttribute="leading" secondItem="KqS-xK-FhK" secondAttribute="leading" constant="29" id="HcI-h7-BlH"/>
+                            <constraint firstItem="QCN-2w-JYh" firstAttribute="leading" secondItem="KqS-xK-FhK" secondAttribute="leading" constant="75" id="UvJ-Wd-sOU"/>
+                            <constraint firstItem="IDa-2a-AU9" firstAttribute="trailing" secondItem="KWx-d0-7nB" secondAttribute="trailingMargin" id="dva-1e-g8l"/>
+                            <constraint firstItem="jEG-5K-Op7" firstAttribute="centerX" secondItem="7qJ-NT-wOz" secondAttribute="centerX" id="gd0-6T-B1u"/>
+                            <constraint firstItem="7qJ-NT-wOz" firstAttribute="leading" secondItem="KqS-xK-FhK" secondAttribute="leading" constant="149" id="hcC-d0-fmc"/>
+                            <constraint firstItem="KqS-xK-FhK" firstAttribute="trailing" secondItem="7qJ-NT-wOz" secondAttribute="trailing" constant="148" id="ip8-vD-mz6"/>
+                            <constraint firstItem="IDa-2a-AU9" firstAttribute="top" secondItem="KqS-xK-FhK" secondAttribute="top" constant="42" id="oT9-8D-QET"/>
+                            <constraint firstItem="QCN-2w-JYh" firstAttribute="top" secondItem="IDa-2a-AU9" secondAttribute="bottom" constant="75" id="vBg-zu-ci0"/>
+                            <constraint firstItem="QCN-2w-JYh" firstAttribute="leading" secondItem="jEG-5K-Op7" secondAttribute="leading" id="xCU-1m-j2y"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KqS-xK-FhK"/>
                     </view>
                     <navigationItem key="navigationItem" id="ozy-T4-4xr"/>
+                    <connections>
+                        <outlet property="email" destination="QCN-2w-JYh" id="fNp-Of-qtn"/>
+                        <outlet property="label" destination="IDa-2a-AU9" id="1x8-q0-Udi"/>
+                        <outlet property="password" destination="jEG-5K-Op7" id="u6d-lF-phM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xd2-Cc-IXm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
