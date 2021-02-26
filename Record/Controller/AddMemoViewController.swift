@@ -40,25 +40,13 @@ UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,
         
     }
     
-  
-
-    
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
-    
- 
 
-
-  
-    
-    
     @IBAction func TapImageView(_ sender: Any) {
         changeImage()
     }

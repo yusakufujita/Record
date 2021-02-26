@@ -18,7 +18,6 @@
 		22BE73622481B3AD001FA426 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22BE73602481B3AD001FA426 /* Main.storyboard */; };
 		22BE73642481B3B0001FA426 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22BE73632481B3B0001FA426 /* Assets.xcassets */; };
 		22BE73672481B3B0001FA426 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22BE73652481B3B0001FA426 /* LaunchScreen.storyboard */; };
-		22BE7373248590CA001FA426 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE7372248590CA001FA426 /* TableViewController.swift */; };
 		22BE737724859B4C001FA426 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE737624859B4C001FA426 /* DetailViewController.swift */; };
 		C925FE2A2595A227B7E22391 /* Pods_Record.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0282610ABE5B7BDAF85D91B9 /* Pods_Record.framework */; };
 /* End PBXBuildFile section */
@@ -39,8 +38,7 @@
 		22BE73632481B3B0001FA426 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22BE73662481B3B0001FA426 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22BE73682481B3B0001FA426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22BE7372248590CA001FA426 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = SOURCE_ROOT; };
-		22BE737624859B4C001FA426 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = SOURCE_ROOT; };
+		22BE737624859B4C001FA426 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = Record/Controller/DetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		D8362F08C3CD790FE04186DB /* Pods-Record.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Record.debug.xcconfig"; path = "Target Support Files/Pods-Record/Pods-Record.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,22 +75,45 @@
 		22BE73592481B3AD001FA426 /* Record */ = {
 			isa = PBXGroup;
 			children = (
-				22BE737624859B4C001FA426 /* DetailViewController.swift */,
-				22BE7372248590CA001FA426 /* TableViewController.swift */,
-				22BE735A2481B3AD001FA426 /* AppDelegate.swift */,
+				22D2B9F425E881A50088E30D /* Controller */,
+				22D2B9F325E8819E0088E30D /* View */,
+				22D2B9F225E881970088E30D /* Model */,
 				22BE735C2481B3AD001FA426 /* SceneDelegate.swift */,
-				22BE73602481B3AD001FA426 /* Main.storyboard */,
-				2224C93C24B7C5C400529209 /* SignUpViewController.swift */,
-				22A3A79A248DA34900887161 /* TableViewController2.swift */,
-				22A3A79C248DACDD00887161 /* DetailViewController2.swift */,
-				22A3A79224899D0C00887161 /* AddMemoViewController.swift */,
-				2224C93824B63A9800529209 /* LoginViewController.swift */,
-				22BE73632481B3B0001FA426 /* Assets.xcassets */,
-				22BE73652481B3B0001FA426 /* LaunchScreen.storyboard */,
-				2224C93A24B64A8300529209 /* GoogleService-Info.plist */,
 				22BE73682481B3B0001FA426 /* Info.plist */,
 			);
 			path = Record;
+			sourceTree = "<group>";
+		};
+		22D2B9F225E881970088E30D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2224C93A24B64A8300529209 /* GoogleService-Info.plist */,
+				22BE735A2481B3AD001FA426 /* AppDelegate.swift */,
+				22BE73632481B3B0001FA426 /* Assets.xcassets */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		22D2B9F325E8819E0088E30D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				22BE73602481B3AD001FA426 /* Main.storyboard */,
+				22BE73652481B3B0001FA426 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		22D2B9F425E881A50088E30D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2224C93C24B7C5C400529209 /* SignUpViewController.swift */,
+				22A3A79A248DA34900887161 /* TableViewController2.swift */,
+				22BE737624859B4C001FA426 /* DetailViewController.swift */,
+				22A3A79C248DACDD00887161 /* DetailViewController2.swift */,
+				2224C93824B63A9800529209 /* LoginViewController.swift */,
+				22A3A79224899D0C00887161 /* AddMemoViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		48D198EBE34BE7F88F40AFED /* Pods */ = {
@@ -231,7 +252,6 @@
 				22BE735B2481B3AD001FA426 /* AppDelegate.swift in Sources */,
 				22A3A79324899D0C00887161 /* AddMemoViewController.swift in Sources */,
 				22A3A79B248DA34900887161 /* TableViewController2.swift in Sources */,
-				22BE7373248590CA001FA426 /* TableViewController.swift in Sources */,
 				2224C93924B63A9800529209 /* LoginViewController.swift in Sources */,
 				22A3A79D248DACDD00887161 /* DetailViewController2.swift in Sources */,
 				2224C93D24B7C5C400529209 /* SignUpViewController.swift in Sources */,
