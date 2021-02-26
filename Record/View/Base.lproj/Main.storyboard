@@ -143,7 +143,7 @@
         <!--雑談一覧-->
         <scene sceneID="jgO-TQ-0cg">
             <objects>
-                <tableViewController id="EgL-Zj-Exz" customClass="TableViewController2" customModule="Record" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="fullScreen" id="EgL-Zj-Exz" customClass="TableViewController2" customModule="Record" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nsQ-qH-7IH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -320,10 +320,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EgL-Zj-Exz" kind="presentation" id="8Nr-UW-Iyy"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZG0-gu-54S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4457.971014492754" y="-89.0625"/>
+            <point key="canvasLocation" x="5281" y="-89"/>
         </scene>
     </scenes>
     <resources>
